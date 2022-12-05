@@ -1,5 +1,6 @@
 package Calendario;
 
+import java.util.*;
 public class Meses {
 
 	final static int mesesCon30 = 30;
@@ -30,11 +31,50 @@ public class Meses {
 	
 }
 
-class Temperaturas{
-	private int TemperaturasDia[] = new int[31];
+class Temperaturas extends Meses{
+	private int TemperaturasDia[] = new int[mesesCon31];
+	private int TempraturaPromedio = 0;
+	private int acumulador = 0;
+	private int promedioTemperaturas = 0;
+	private int TemperaturaMayorPromedio = 0;
+	private int TemperaturaMenorPromedio = 0;
 	public Temperaturas() {
 		
 	}
 	
-
+	public void setCalcularTemperatura() {
+		Random ran = new Random();
+	
+		int rangoTemperaturas = 0;//con este metodo creo un numero random y lo convierto en positivo de una vez
+		for (int i = 0; i < TemperaturasDia.length; i++) {
+			do {
+			 rangoTemperaturas = Math.abs(ran.nextInt(19) - 34) ; 
+			}while(rangoTemperaturas < 19 || rangoTemperaturas > 35);
+			TemperaturasDia[i] = rangoTemperaturas;
+			this.acumulador += TemperaturasDia[i];//aqui acumulamos todas las temperaturas para sacar el promedio
+		}
+	}
+	public int getTemperaturas(int num) {
+		return TemperaturasDia[num];
+	}
+	public int getTemperaturaPromedio() {//funcion para calcular el promedio de las temperaturas
+		
+		this.promedioTemperaturas = this.acumulador / mesesCon31;
+		return this.promedioTemperaturas;
+	}
+	public void CalcularMayorYMenorTemperatura() {//metodo para calcular el mayor o menor al promedio de la temperatura
+		for (int i = 0; i < TemperaturasDia.length; i++) {
+			if(TemperaturasDia[i] >= promedioTemperaturas) {
+				TemperaturaMayorPromedio++;
+			}else if(TemperaturasDia[i] < promedioTemperaturas) {
+				TemperaturaMenorPromedio++;
+			}
+		}
+	}
+	public int CalcularMenorPromedio() {
+		return TemperaturaMenorPromedio;
+	}
+	public int CalcularMayorPromedio() {
+		return TemperaturaMayorPromedio;
+	}
 }
