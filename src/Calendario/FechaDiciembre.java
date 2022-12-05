@@ -32,12 +32,18 @@ public class FechaDiciembre {
 		
 		//aplicando las temperaturas 
 		/*for (int i = 0; i < MaxDias; i++) {
-			System.out.println("la temperatura del dia " +  i + "= " + temperatura.getTemperaturas(i) +  "grados");  
+		
 		}
 		System.out.println("el promedio de las temperaturas es igual=" + temperatura.getTemperaturaPromedio() + "Grados");
 	*/
 		temperatura.getTemperaturaPromedio();
 		temperatura.CalcularMayorYMenorTemperatura();
+		for (int i = 0; i < MaxDias; i++) {
+			System.out.println("la temperatura del dia " +  i + "= " + " del mes " + mesActual + "es" + temperatura.getTemperaturas(i) +  "grados");  //ciclo para hacer correr la matriz de las temperaturas
+		}
+		System.out.println(" " + "\n");
+		System.out.println(temperatura.getTemperaturaPromedio());
 		System.out.println("las temperaturas mayor al promedio son=" + temperatura.CalcularMayorPromedio() +"\nlas menores al promedio son= " + temperatura.CalcularMenorPromedio());
+		System.out.println("las temperaturas mayores a 25 grados son= " + temperatura.calcularMayora25());
 	}
 }

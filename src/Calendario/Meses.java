@@ -38,6 +38,8 @@ class Temperaturas extends Meses{
 	private int promedioTemperaturas = 0;
 	private int TemperaturaMayorPromedio = 0;
 	private int TemperaturaMenorPromedio = 0;
+	private int TemperaturaMayorA25 = 0;
+	private Integer PorcentajeMayorA25 = 0;
 	public Temperaturas() {
 		
 	}
@@ -69,6 +71,9 @@ class Temperaturas extends Meses{
 			}else if(TemperaturasDia[i] < promedioTemperaturas) {
 				TemperaturaMenorPromedio++;
 			}
+			if(TemperaturasDia[i] > 25) {
+				TemperaturaMayorA25++;
+			}
 		}
 	}
 	public int CalcularMenorPromedio() {
@@ -76,5 +81,8 @@ class Temperaturas extends Meses{
 	}
 	public int CalcularMayorPromedio() {
 		return TemperaturaMayorPromedio;
+	}
+	public int calcularMayora25() {
+		return TemperaturaMayorA25;
 	}
 }
